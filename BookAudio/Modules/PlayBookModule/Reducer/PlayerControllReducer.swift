@@ -153,18 +153,13 @@ struct PlayerControllReducer {
                                 }
                             }
                         }
+                    case .setSeekTime(let sec):
+                        state.audioPlayer?.updatePlayingTime(sec, isPlaying: state.timerIsOn)
+                        return .run { sender in
+                            await sender(.updateTime)
+                        }
                     }
                 }
-//                case .setSeekLineWidth(let width):
-//                    state.seekLineWidth = width
-//                    return .none
-//                case .changePlayingTime(let point):
-//                    state.audioPlayer?.updatePlayingTime(seekLineWidth: state.seekLineWidth, point: point)
-//                    return .run { sender in
-//                        await sender(.updateTime)
-//                    }
-//            case .seekActions(.view(_)):
-//            case .seekActions(.internal(_)):
             }
         }
         Scope(state: \.seekState, action: /PlayerControllReducer.Action.seekActions) {
@@ -204,16 +199,5 @@ struct PlayerControllReducer {
         var timerIsOn = false
         var rate: Float = 1.0
         var maxDuration: Float = 0.0
-
-        var seekLineWidth: Float = 0.0
-
-        
-        var seekLineTrackTime: Float {
-//            let duration = CMTimeGetSeconds(maxDuration)
-//            return (timePlaying * seekLineWidth) / Float(duration)
-            return 0.0
-        }
-
-        
     }
 }

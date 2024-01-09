@@ -15,6 +15,11 @@ struct PlayerSeekReducer {
         var isEnabled = false
         var fullDuration: Float = 0.0
         var currentPlayingTime: Float = 0.0
+        var seekLineWidth: Float = 0.0
+
+        var seekLineTrackTime: Float {
+            return (currentPlayingTime * seekLineWidth) / fullDuration
+        }
 
         var endTime: String {
             if !isEnabled {
@@ -84,10 +89,13 @@ struct PlayerSeekReducer {
 
         enum InternalAction: Equatable {
             case toggleRate
+            case seekLineWidth(Float)
+            case setSeekTime(CGPoint)
         }
 
         enum DelegateAction: Equatable {
             case setRate(Float)
+            case setSeekTime(Float)
         }
 
         case view(ViewAction)
@@ -107,7 +115,6 @@ struct PlayerSeekReducer {
                     return .none
                 case .setCurrentPlayingTime(let time):
                     state.currentPlayingTime = time
-                    print(time)
                     return .none
                 }
             case let .internal(action):
@@ -116,6 +123,21 @@ struct PlayerSeekReducer {
                     state.rate.toggle()
                     return .run { [rateValue = state.rate.rateValue] send in
                         await send(.delegate(.setRate(rateValue)))
+                    }
+                case .seekLineWidth(let width):
+                    state.seekLineWidth = width
+                    return .none
+                case .setSeekTime(let point):
+                    var pointX: Float = 0.0
+                    if point.x >= 0 && point.x <= CGFloat(state.seekLineWidth) {
+                        pointX = Float(point.x)
+                    } else if point.x > CGFloat(state.seekLineWidth) {
+                        pointX = state.fullDuration
+                    }
+                    let getPointPositionByTime = pointX / state.seekLineWidth
+                    let progress = state.fullDuration * getPointPositionByTime
+                    return .run { send in
+                        await send(.delegate(.setSeekTime(progress)))
                     }
                 }
             case .delegate(_):

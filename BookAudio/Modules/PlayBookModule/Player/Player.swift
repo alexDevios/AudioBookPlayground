@@ -96,18 +96,9 @@ struct Player: Equatable {
         }
     }
 
-    public func updatePlayingTime(seekLineWidth: Float, point: CGPoint) {
-        var pointX: Float = 0.0
-        if point.x >= 0 && point.x <= CGFloat(seekLineWidth) {
-            pointX = Float(point.x)
-        } else if point.x > CGFloat(seekLineWidth) {
-            pointX = Float(audioPlayer.currentItem?.duration.seconds ?? 0.0)
-        }
-        let isPlaying = audioPlayer.timeControlStatus == .playing
+    public func updatePlayingTime(_ time: Float, isPlaying: Bool) {
         let currentRate = audioPlayer.rate
-        let getPointPositionByTime = pointX / seekLineWidth
-        let progress = (audioPlayer.currentItem?.duration.seconds ?? 0.0) * Double(getPointPositionByTime)
-        let sec = CMTime(seconds: Double(progress), preferredTimescale: 600)
+        let sec = CMTime(seconds: Double(time), preferredTimescale: 600)
         audioPlayer.seek(to: sec)
         audioPlayer.pause()
         if isPlaying {

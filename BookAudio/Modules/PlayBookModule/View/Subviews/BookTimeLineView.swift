@@ -28,7 +28,7 @@ struct BookTimeLineView: View {
                             .background(GeometryReader { geometry in
                                 Color.clear
                                     .onAppear {
-//                                        viewStore.send(.setSeekLineWidth(Float(geometry.frame(in: .global).width)))
+                                        viewStore.send(.internal(.seekLineWidth(Float(geometry.frame(in: .global).width))))
                                     }
                             })
                             .opacity(viewStore.isEnabled ? 1.0 : 0.5)
@@ -36,24 +36,16 @@ struct BookTimeLineView: View {
                         Capsule()
                             .fill(Color.blue)
                             .frame(width: CGFloat(
-//                                !viewStore.seekLineTrackTime.isFinite ?
-                                0 
-//                                : viewStore.seekLineTrackTime
-                            ), height: 4)
+                                !viewStore.seekLineTrackTime.isFinite ? 0 : viewStore.seekLineTrackTime), height: 4)
                             .disabled(!viewStore.isEnabled)
                             .opacity(viewStore.isEnabled ? 1.0 : 0.5)
 
                         Circle()
                             .fill(Color.blue)
                             .frame(width: 10, height: 10)
-                            .offset(x: CGFloat(
-                                5
-//                                viewStore.seekLineTrackTime
-                            ) - 5)
+                            .offset(x: CGFloat(viewStore.seekLineTrackTime) - 5)
                             .gesture(DragGesture().onChanged({ value in
-//                                if viewStore.playerIsReady {
-//                                    viewStore.send(.changePlayingTime(value.location))
-//                                }
+                                viewStore.send(.internal(.setSeekTime(value.location)))
                             }))
                             .disabled(!viewStore.isEnabled)
                             .opacity(viewStore.isEnabled ? 1.0 : 0.5)
