@@ -7,18 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8BC740642B457CCB007E1758 /* BookAudioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC740632B457CCB007E1758 /* BookAudioApp.swift */; };
-		8BC740662B457CCB007E1758 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC740652B457CCB007E1758 /* ContentView.swift */; };
+		8B3E23EB2B4955F000B0114C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8B3E23EA2B4955F000B0114C /* ComposableArchitecture */; };
+		8B3E23F22B49564100B0114C /* PlayBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E23F12B49564100B0114C /* PlayBookView.swift */; };
+		8B3E23F52B49567C00B0114C /* BookInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E23F42B49567C00B0114C /* BookInfoView.swift */; };
+		8B3E23F72B4956A900B0114C /* BookPlayerElementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E23F62B4956A900B0114C /* BookPlayerElementsView.swift */; };
+		8B3E23F92B4956CF00B0114C /* BookTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E23F82B4956CF00B0114C /* BookTimeLineView.swift */; };
+		8B3E23FB2B4956FA00B0114C /* BookButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E23FA2B4956FA00B0114C /* BookButtonsView.swift */; };
+		8B3E23FD2B49574800B0114C /* BookSwitchPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E23FC2B49574800B0114C /* BookSwitchPlayingView.swift */; };
+		8B3E23FF2B4958E700B0114C /* PlayBookReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E23FE2B4958E700B0114C /* PlayBookReducer.swift */; };
+		8B3E24012B49FAE400B0114C /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E24002B49FAE400B0114C /* BookResponseModel.swift */; };
+		8B3E24032B49FE9800B0114C /* PlayBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E24022B49FE9800B0114C /* PlayBookApp.swift */; };
+		8B3E24062B4A07C800B0114C /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E24052B4A07C800B0114C /* ShimmerView.swift */; };
+		8B3E240B2B4AF85D00B0114C /* BookRuntimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E240A2B4AF85D00B0114C /* BookRuntimeModel.swift */; };
+		8B3E240E2B4B11CE00B0114C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E240D2B4B11CE00B0114C /* Player.swift */; };
+		8B3E24542B4C738200B0114C /* PlayerControllReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E24532B4C738200B0114C /* PlayerControllReducer.swift */; };
+		8B3E24562B4CACD100B0114C /* PlayerButtonReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E24552B4CACD100B0114C /* PlayerButtonReducer.swift */; };
+		8B3E24582B4D158300B0114C /* BookInfoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E24572B4D158300B0114C /* BookInfoReducer.swift */; };
+		8B3E245A2B4D160800B0114C /* PlayerSeekReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E24592B4D160800B0114C /* PlayerSeekReducer.swift */; };
 		8BC740682B457CCD007E1758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BC740672B457CCD007E1758 /* Assets.xcassets */; };
 		8BC7406B2B457CCD007E1758 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BC7406A2B457CCD007E1758 /* Preview Assets.xcassets */; };
+		8BD26D362B4D382500EDFCA8 /* BoundariesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD26D352B4D382500EDFCA8 /* BoundariesAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B3E23F12B49564100B0114C /* PlayBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBookView.swift; sourceTree = "<group>"; };
+		8B3E23F42B49567C00B0114C /* BookInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoView.swift; sourceTree = "<group>"; };
+		8B3E23F62B4956A900B0114C /* BookPlayerElementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPlayerElementsView.swift; sourceTree = "<group>"; };
+		8B3E23F82B4956CF00B0114C /* BookTimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTimeLineView.swift; sourceTree = "<group>"; };
+		8B3E23FA2B4956FA00B0114C /* BookButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookButtonsView.swift; sourceTree = "<group>"; };
+		8B3E23FC2B49574800B0114C /* BookSwitchPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSwitchPlayingView.swift; sourceTree = "<group>"; };
+		8B3E23FE2B4958E700B0114C /* PlayBookReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBookReducer.swift; sourceTree = "<group>"; };
+		8B3E24002B49FAE400B0114C /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
+		8B3E24022B49FE9800B0114C /* PlayBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBookApp.swift; sourceTree = "<group>"; };
+		8B3E24052B4A07C800B0114C /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		8B3E240A2B4AF85D00B0114C /* BookRuntimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRuntimeModel.swift; sourceTree = "<group>"; };
+		8B3E240D2B4B11CE00B0114C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		8B3E240F2B4B6E6900B0114C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8B3E24532B4C738200B0114C /* PlayerControllReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControllReducer.swift; sourceTree = "<group>"; };
+		8B3E24552B4CACD100B0114C /* PlayerButtonReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButtonReducer.swift; sourceTree = "<group>"; };
+		8B3E24572B4D158300B0114C /* BookInfoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoReducer.swift; sourceTree = "<group>"; };
+		8B3E24592B4D160800B0114C /* PlayerSeekReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSeekReducer.swift; sourceTree = "<group>"; };
 		8BC740602B457CCB007E1758 /* BookAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BC740632B457CCB007E1758 /* BookAudioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAudioApp.swift; sourceTree = "<group>"; };
-		8BC740652B457CCB007E1758 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8BC740672B457CCD007E1758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BC7406A2B457CCD007E1758 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8BD26D352B4D382500EDFCA8 /* BoundariesAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundariesAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +58,91 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3E23EB2B4955F000B0114C /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B3E23EC2B4955F700B0114C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E23ED2B49560200B0114C /* PlayBookModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		8B3E23ED2B49560200B0114C /* PlayBookModule */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E240C2B4B11C000B0114C /* Player */,
+				8B3E23F02B49562300B0114C /* Model */,
+				8B3E23EF2B49561C00B0114C /* Reducer */,
+				8B3E23EE2B49561600B0114C /* View */,
+			);
+			path = PlayBookModule;
+			sourceTree = "<group>";
+		};
+		8B3E23EE2B49561600B0114C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E23F32B49566600B0114C /* Subviews */,
+				8B3E23F12B49564100B0114C /* PlayBookView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B3E23EF2B49561C00B0114C /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E23FE2B4958E700B0114C /* PlayBookReducer.swift */,
+				8B3E24572B4D158300B0114C /* BookInfoReducer.swift */,
+				8B3E24532B4C738200B0114C /* PlayerControllReducer.swift */,
+				8B3E24592B4D160800B0114C /* PlayerSeekReducer.swift */,
+				8B3E24552B4CACD100B0114C /* PlayerButtonReducer.swift */,
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
+		8B3E23F02B49562300B0114C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E24002B49FAE400B0114C /* BookResponseModel.swift */,
+				8B3E240A2B4AF85D00B0114C /* BookRuntimeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B3E23F32B49566600B0114C /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E23F42B49567C00B0114C /* BookInfoView.swift */,
+				8B3E23F62B4956A900B0114C /* BookPlayerElementsView.swift */,
+				8B3E23F82B4956CF00B0114C /* BookTimeLineView.swift */,
+				8B3E23FA2B4956FA00B0114C /* BookButtonsView.swift */,
+				8B3E23FC2B49574800B0114C /* BookSwitchPlayingView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		8B3E24042B4A07C000B0114C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E24052B4A07C800B0114C /* ShimmerView.swift */,
+				8BD26D352B4D382500EDFCA8 /* BoundariesAction.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8B3E240C2B4B11C000B0114C /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				8B3E240D2B4B11CE00B0114C /* Player.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		8BC740572B457CCB007E1758 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +162,10 @@
 		8BC740622B457CCB007E1758 /* BookAudio */ = {
 			isa = PBXGroup;
 			children = (
-				8BC740632B457CCB007E1758 /* BookAudioApp.swift */,
-				8BC740652B457CCB007E1758 /* ContentView.swift */,
+				8B3E240F2B4B6E6900B0114C /* Info.plist */,
+				8B3E24042B4A07C000B0114C /* Helpers */,
+				8B3E23EC2B4955F700B0114C /* Modules */,
+				8B3E24022B49FE9800B0114C /* PlayBookApp.swift */,
 				8BC740672B457CCD007E1758 /* Assets.xcassets */,
 				8BC740692B457CCD007E1758 /* Preview Content */,
 			);
@@ -83,6 +196,9 @@
 			dependencies = (
 			);
 			name = BookAudio;
+			packageProductDependencies = (
+				8B3E23EA2B4955F000B0114C /* ComposableArchitecture */,
+			);
 			productName = BookAudio;
 			productReference = 8BC740602B457CCB007E1758 /* BookAudio.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +227,9 @@
 				Base,
 			);
 			mainGroup = 8BC740572B457CCB007E1758;
+			packageReferences = (
+				8B3E23E92B4955F000B0114C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 8BC740612B457CCB007E1758 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +256,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BC740662B457CCB007E1758 /* ContentView.swift in Sources */,
-				8BC740642B457CCB007E1758 /* BookAudioApp.swift in Sources */,
+				8B3E24542B4C738200B0114C /* PlayerControllReducer.swift in Sources */,
+				8BD26D362B4D382500EDFCA8 /* BoundariesAction.swift in Sources */,
+				8B3E245A2B4D160800B0114C /* PlayerSeekReducer.swift in Sources */,
+				8B3E240B2B4AF85D00B0114C /* BookRuntimeModel.swift in Sources */,
+				8B3E24032B49FE9800B0114C /* PlayBookApp.swift in Sources */,
+				8B3E23F22B49564100B0114C /* PlayBookView.swift in Sources */,
+				8B3E24062B4A07C800B0114C /* ShimmerView.swift in Sources */,
+				8B3E240E2B4B11CE00B0114C /* Player.swift in Sources */,
+				8B3E23FB2B4956FA00B0114C /* BookButtonsView.swift in Sources */,
+				8B3E24562B4CACD100B0114C /* PlayerButtonReducer.swift in Sources */,
+				8B3E23F72B4956A900B0114C /* BookPlayerElementsView.swift in Sources */,
+				8B3E23FF2B4958E700B0114C /* PlayBookReducer.swift in Sources */,
+				8B3E24582B4D158300B0114C /* BookInfoReducer.swift in Sources */,
+				8B3E23F92B4956CF00B0114C /* BookTimeLineView.swift in Sources */,
+				8B3E23F52B49567C00B0114C /* BookInfoView.swift in Sources */,
+				8B3E24012B49FAE400B0114C /* BookResponseModel.swift in Sources */,
+				8B3E23FD2B49574800B0114C /* BookSwitchPlayingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +408,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BookAudio/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookAudio/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -302,6 +437,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BookAudio/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookAudio/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -342,6 +478,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B3E23E92B4955F000B0114C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B3E23EA2B4955F000B0114C /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B3E23E92B4955F000B0114C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8BC740582B457CCB007E1758 /* Project object */;
 }
