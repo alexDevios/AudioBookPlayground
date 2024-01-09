@@ -191,13 +191,16 @@ struct PlayerControllReducer {
             && lhs.buttonElementsState == rhs.buttonElementsState
         }
 
-        var buttonElementsState: PlayerButtonReducer.PlayerButtonReducerState = .init()
-        var seekState: PlayerSeekReducer.PlayerSeekReducerState = .init()
-        
+        var buttonElementsState: PlayerButtonReducer.PlayerButtonReducerState?
+        var seekState: PlayerSeekReducer.PlayerSeekReducerState?
+
         var audioPlayer: Player?
         var playerIsReady = false
         var timerIsOn = false
         var rate: Float = 1.0
         var maxDuration: Float = 0.0
+        private var audioUrl: String?
+
+        static let initial: Self = .init(audioUrl: nil)
     }
 }

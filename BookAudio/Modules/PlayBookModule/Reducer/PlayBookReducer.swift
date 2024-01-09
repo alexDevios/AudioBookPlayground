@@ -13,38 +13,42 @@ struct PlayBookReducer {
     var body: some Reducer<PlayBookReducer.PlayBookReducerState, PlayBookReducer.PlayBookReducerAction> {
         Reduce { state, action in
             switch action {
-            case .loadBook:
-                state.bookModel = nil
-                state.selectedChapter = nil
-                state.bookIsLoaded = false
-                return .run { send in
-                    let url = "https://d85e67e1340943f5baee67c933f121f1.api.mockbin.io/"
-                    let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
-                    guard let responseModel = try? JSONDecoder().decode(BookResponseModel.self, from: data) else {
-                        await send(.emptyBook)
-                        return
+            case let .view(action):
+                switch action {
+                case .bookIsLoaded(let model):
+                    state.bookModel = model
+                    state.selectedChapter = model.chapters.first
+                    state.bookIsLoaded = true
+                    state.bookInfo = .init(bookModel: model, selectedId: model.chapters.first?.chapterId)
+                    state.playerButtonElementsState = .init()
+                    return .none
+                case .emptyBook:
+                    state.bookModel = nil
+                    state.selectedChapter = nil
+                    state.bookIsLoaded = false
+                    state.bookInfo = .initial
+                    state.playerButtonElementsState = .initial
+                    return .none
+                }
+            case let .internal(action):
+                switch action {
+                case .loadBook:
+                    state.bookModel = nil
+                    state.selectedChapter = nil
+                    state.bookIsLoaded = false
+                    return .run { send in
+                        let url = "https://d85e67e1340943f5baee67c933f121f1.api.mockbin.io/"
+                        let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
+                        guard let responseModel = try? JSONDecoder().decode(BookResponseModel.self, from: data) else {
+                            await send(.view(.emptyBook))
+                            return
+                        }
+                        await send(.view(.bookIsLoaded(.init(responseModel))))
                     }
-                    await send(.bookLoaded(.init(responseModel)))
+                case .showChapterList(_):
+                    return .none
                 }
-            case .bookLoaded(let bookModel):
-                state.bookModel = bookModel
-                state.selectedChapter = bookModel.chapters.first
-                state.bookIsLoaded = true
-                return .run { [selectedChapter = state.selectedChapter] send in
-                    await send(.bookInfoAction(.view(.loadedBook(bookModel: bookModel, selectedId: selectedChapter?.chapterId))))
-                    await send(.playerButtonActions(.onAppear(selectedChapter?.chapterFileUrl ?? "")))
-                }
-            case .emptyBook:
-                state.bookModel = nil
-                state.selectedChapter = nil
-                state.bookIsLoaded = false
-                return .none
-            case .showChapterList(let isChapterShown):
-                state.selectedChapterList = isChapterShown
-                return .none
-            case .playerButtonActions(_):
-                return .none
-            case .bookInfoAction(_):
+            case .delegate(_), .playerButtonActions(_), .bookInfoAction(_):
                 return .none
             }
         }
@@ -56,22 +60,39 @@ struct PlayBookReducer {
         }
     }
 
-    enum PlayBookReducerAction: Equatable {
-        case loadBook
-        case bookLoaded(BookRuntimeModel)
-        case emptyBook
-        case showChapterList(Bool)
+    enum PlayBookReducerAction: BoundariesAction {
+        enum ViewAction: Equatable {
+            case bookIsLoaded(BookRuntimeModel)
+            case emptyBook
+        }
+
+        enum InternalAction: Equatable {
+            case loadBook
+            case showChapterList(Bool)
+//            case playerButtonActions(PlayerControllReducer.Action)
+//            case bookInfoAction(BookInfoReducer.BookInfoReducerAction)
+        }
+
+        enum DelegateAction: Equatable {}
+
+        case view(ViewAction)
+        case `internal`(InternalAction)
+        case delegate(DelegateAction)
+
+        // actions залишив тут, через проблему створення Scope (коли actions знаходяться в InternalActions)
         case playerButtonActions(PlayerControllReducer.Action)
         case bookInfoAction(BookInfoReducer.BookInfoReducerAction)
     }
 
     struct PlayBookReducerState: Equatable {
-        var playerButtonElementsState: PlayerControllReducer.State = .init()
-        var bookInfo: BookInfoReducer.BookInfoReducerState = .init()
+        var playerButtonElementsState: PlayerControllReducer.State
+        var bookInfo: BookInfoReducer.BookInfoReducerState
         var bookIsLoaded = false
         var selectedChapterList = false
         var bookModel: BookRuntimeModel?
         var selectedChapter: BookChaptersRuntimeModel?
+
+        static let initial: Self = .init(playerButtonElementsState: .init(), bookInfo: .init())
     }
 }
 

@@ -29,7 +29,7 @@ struct PlayBookView: View {
 
 
 #Preview {
-    let store = Store(initialState: PlayBookReducer.State()) {
+    let store = Store(initialState: .initial) {
         PlayBookReducer()
     }
     return PlayBookView(store: store)

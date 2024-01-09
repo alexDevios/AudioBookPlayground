@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct PlayBookApp: App {
     var body: some Scene {
         WindowGroup {
-            let store = Store(initialState: PlayBookReducer.State()) {
+            let store = Store(initialState: .initial) {
                 PlayBookReducer()
             }
             PlayBookView(store: store)

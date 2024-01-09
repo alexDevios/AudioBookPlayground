@@ -27,27 +27,12 @@ struct BookInfoReducer {
         var isLoaded: Bool {
             bookModel != nil
         }
-    }
-    enum BookInfoReducerAction: BoundariesAction {
-        enum ViewAction: Equatable {
-            case loadedBook(bookModel: BookRuntimeModel?, selectedId: String?)
-        }
-        enum InternalAction: Equatable {}
-        enum DelegateAction: Equatable {}
 
-        case view(ViewAction)
-        case `internal`(InternalAction)
-        case delegate(DelegateAction)
+        static let initial: Self = .init(bookModel: nil, selectedId: nil)
     }
+    enum BookInfoReducerAction: Equatable {}
 
     var body: some Reducer<BookInfoReducer.BookInfoReducerState, BookInfoReducer.BookInfoReducerAction> {
-        Reduce { state, action in
-            switch action {
-            case let .view(.loadedBook(bookModel: bookModel, selectedId: selectedId)):
-                state.bookModel = bookModel
-                state.selectedId = selectedId
-                return .none
-            }
-        }
+        EmptyReducer()
     }
 }
