@@ -17,9 +17,9 @@ struct PlayerControllReducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case .onAppear(let audioUrl):
-                return .run { sender in
-                    guard let url = audioUrl.getUrl() else {
+            case .onAppear:
+                return .run { [audioUrl = state.audioUrl] sender in
+                    guard let url = audioUrl?.getUrl() else {
                         await sender(.failture)
                         return
                     }
@@ -32,17 +32,14 @@ struct PlayerControllReducer {
                 state.playerIsReady = true
                 state.audioPlayer = Player(player)
                 state.maxDuration = duration
-                return .run { [playerIsReady = state.playerIsReady] sender in
-                    await sender(.buttonActions(.view(.isEnabled(playerIsReady))))
-                    await sender(.seekActions(.view(.isEnabled(isEnable: playerIsReady, fullDuration: duration))))
-                    await sender(.seekActions(.view(.setCurrentPlayingTime(0.0))))
-                }
+                state.buttonElementsState = .init(isPlaying: false, isEnabled: true)
+                state.seekState = .init(rate: .x1, isEnabled: true, fullDuration: duration, currentPlayingTime: 0.0, seekLineWidth: 0.0)
+                return .none
             case .failture:
                 state.playerIsReady = false
-                return .run { [playerIsReady = state.playerIsReady] sender in
-                    await sender(.buttonActions(.view(.isEnabled(playerIsReady))))
-                    await sender(.seekActions(.view(.isEnabled(isEnable: playerIsReady, fullDuration: 0.0))))
-                }
+                state.buttonElementsState = .initial
+                state.seekState = .initial
+                return .none
             case .playPrevious:
                 return .none
             case .startTimer:
@@ -171,7 +168,7 @@ struct PlayerControllReducer {
     }
 
     enum Action: Equatable {
-        case onAppear(String)
+        case onAppear
         case failture
         case playerIsReady(player: AVPlayer, durationTime: Float)
         case startTimer
@@ -191,16 +188,16 @@ struct PlayerControllReducer {
             && lhs.buttonElementsState == rhs.buttonElementsState
         }
 
-        var buttonElementsState: PlayerButtonReducer.PlayerButtonReducerState?
-        var seekState: PlayerSeekReducer.PlayerSeekReducerState?
+        var buttonElementsState: PlayerButtonReducer.PlayerButtonReducerState
+        var seekState: PlayerSeekReducer.PlayerSeekReducerState
 
         var audioPlayer: Player?
         var playerIsReady = false
         var timerIsOn = false
         var rate: Float = 1.0
         var maxDuration: Float = 0.0
-        private var audioUrl: String?
+        private(set) var audioUrl: String?
 
-        static let initial: Self = .init(audioUrl: nil)
+        static let initial: Self = .init(buttonElementsState: .init(), seekState: .init())
     }
 }

@@ -21,7 +21,7 @@ struct PlayBookView: View {
                 }
             })
             .onAppear(perform: {
-                viewStore.send(.loadBook)
+                viewStore.send(.internal(.loadBook))
             })
         }
     }

@@ -20,15 +20,19 @@ struct PlayBookReducer {
                     state.selectedChapter = model.chapters.first
                     state.bookIsLoaded = true
                     state.bookInfo = .init(bookModel: model, selectedId: model.chapters.first?.chapterId)
-                    state.playerButtonElementsState = .init()
-                    return .none
+                    state.playerButtonElementsState = .init(buttonElementsState: .initial, seekState: .initial, audioUrl: model.chapters.first?.chapterFileUrl)
+                    return .run { send in
+                        await send(.playerButtonActions(.onAppear))
+                    }
                 case .emptyBook:
                     state.bookModel = nil
                     state.selectedChapter = nil
                     state.bookIsLoaded = false
                     state.bookInfo = .initial
                     state.playerButtonElementsState = .initial
-                    return .none
+                    return .run { send in
+                        await send(.playerButtonActions(.failture))
+                    }
                 }
             case let .internal(action):
                 switch action {
@@ -92,7 +96,7 @@ struct PlayBookReducer {
         var bookModel: BookRuntimeModel?
         var selectedChapter: BookChaptersRuntimeModel?
 
-        static let initial: Self = .init(playerButtonElementsState: .init(), bookInfo: .init())
+        static let initial: Self = .init(playerButtonElementsState: .initial, bookInfo: .initial)
     }
 }
 

@@ -42,6 +42,8 @@ struct PlayerButtonReducer {
     struct PlayerButtonReducerState: Equatable {
         var isPlaying: Bool = false
         var isEnabled: Bool = false
+
+        static let initial: Self = .init(isPlaying: false, isEnabled: false)
     }
 
     var body: some Reducer<PlayerButtonReducerState, PlayerButtonReducerAction> {

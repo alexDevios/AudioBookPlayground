@@ -13,7 +13,7 @@ struct BookInfoReducer {
         var bookModel: BookRuntimeModel?
         var selectedId: String?
         var title: String {
-            bookModel?.bookTitle ?? ""
+            bookModel?.chapters.first(where: { $0.chapterId == selectedId })?.chapterTitle ?? ""
         }
         var currentChapter: Int {
             (bookModel?.chapters.firstIndex(where: { $0.chapterId == selectedId }) ?? 0) + 1

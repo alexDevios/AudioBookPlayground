@@ -11,6 +11,7 @@ import ComposableArchitecture
 @Reducer
 struct PlayerSeekReducer {
     struct PlayerSeekReducerState: Equatable {
+        static let initial: Self = .init(rate: .x1, isEnabled: false, fullDuration: 0.0, currentPlayingTime: 0.0, seekLineWidth: 0.0)
         var rate: TrackRate = .x1
         var isEnabled = false
         var fullDuration: Float = 0.0
